@@ -15,12 +15,21 @@
             border: 1px solid green;
             width: 100%;
             background: violet;
-            display: flex;
             line-height: 0px;
-
+            height: 200px;
+            position: relative;
+            box-sizing: border-box;
         }
 
-        .photo-htlm.jpg {}
+        .photo {
+            position: absolute;
+            left: 20px;
+            height: inherit;
+            border: 2px solid black;
+            background-image: url(photo-htlm.jpg);
+            width: 140px;
+            background-size: cover;
+        }
 
         .corpsTexte {
             width: 100%;
@@ -33,6 +42,7 @@
             justify-content: space-evenly;
             align-items: stretch;
             align-content: stretch;
+            box-sizing: border-box;
 
         }
 
@@ -70,9 +80,12 @@
 
         footer {
             color: violet;
-            border: solid rgb(46, 0, 253);
+            border: solid rgb(46, 0, 253) 2px;
             height: 100px;
             width: 100%;
+            box-sizing: border-box;
+
+
         }
 
         .bonbon {
@@ -90,9 +103,9 @@
     <div class="bigContainer">
         <div class="container1">
             <header class="head">
-                <div>
+                <div class="photo">
                     <!--<img src="cni/cninew.png" width="150" alt="">-->
-                    <img src="photo-htlm.jpg" width="150" alt="">
+
                 </div>
             </header>
         </div>
