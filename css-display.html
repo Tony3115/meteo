@@ -1,0 +1,53 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSS Display</title>
+    <meta name="description" content="An interactive getting started guide">
+    <link rel="stylesheet" href="main.css">
+    <meta name="viewport" content="width=device-withd, initial-scale=1.0">
+</head>
+
+<body>
+
+    <style>
+        .iblock {
+            display: inline-block;
+        }
+
+        .ispan {
+            height: 60px;
+            border: black 1px solid;
+            padding: 10px;
+            margin: 15px;
+            height: 200px;
+            width: 300px;
+        }
+
+        .classic {
+            border: 1px dashed black;
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+    <h1>CSS Display
+    </h1>
+    <h2>Display block</h2>
+    <div class="container">
+        <div class="classic" style="display: none">Div avec display block</div>
+        <div class="classic">Div avec display block</div>
+        <div class="classic">Div avec display block</div>
+        <span class="ispan" style="width:300px;height:200px;">Texte dans un span</span>
+    </div>
+
+    <h2>Display inline</h2>
+    <div class="classic">Div avec display block</div>
+    <div class="classic" style="visibility: hidden">Div avec display block</div>
+    <div class="classic">Div avec display block</div>
+    <span class="ispan iblock" style="width:300px;height:160px;">Texte dans un span</span>
+    <span class="ispan iblock" style="width:300px;height:160px;">Texte dans un span</span>
+</body>
+
+</html>

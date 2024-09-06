@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Exercice 2</title>
+
+    <link rel="stylesheet" href="./exercice 2_files/style.css">
+    <script type="text/javascript" src="./exercice 2_files/script.js.télécharger"></script>
+</head>
+
+<body>
+    <h1>Formulaire d'inscription à une formation informatique</h1>
+    <form action="" method="post">
+
+        <fieldset>
+            <legend>Fiche de renseignement</legend>
+
+            <label for="nom">Nom</label><br>
+            <input type="text" id="nom" name="nom" value="" required=""><br>
+
+            <label for="prenom">Prénom</label><br>
+            <input type="text" id="prenom" name="prenom" value="" required=""><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" value="" required=""><br>
+
+            <label for="phone">Téléphone</label><br>
+            <input type="tel" id="tel" name="tel" value=""><br>
+
+            <label for="address">Adresse</label><br>
+            <input type="address" id="adress" name="adress" value="" required=""><br>
+
+            <label for="date">Date de naissance</label><br>
+            <input type="date" id="date" name="date" value="" required=""><br>
+
+        </fieldset><br>
+
+        <fieldset>
+
+            <legend>Informations complémentaires</legend>
+
+            <div>
+                <h2>Diplômes</h2>
+
+                <input type="checkbox" id="brevet" name="brevet" value="">
+                <label for="brevet">Brevet</label><br>
+
+                <input type="checkbox" id="bac" name="bac" value="">
+                <label for="bac">Bac</label><br>
+
+                <input type="checkbox" id="bts" name="bts" value="">
+                <label for="bts">BTS</label><br>
+
+                <input type="checkbox" id="license" name="license" value="">
+                <label for="license">License</label><br>
+
+                <input type="checkbox" id="master" name="master" value="">
+                <label for="master">Master</label><br>
+
+                <input type="checkbox" id="doctorat" name="doctorat" value="">
+                <label for="doctorat">Doctorat</label><br>
+            </div>
+
+            <div>
+
+                <h2>Langues parlées</h2>
+                <input type="checkbox" id="francais" name="francais" value="">
+                <label for="francais">Français</label><br>
+
+                <input type="checkbox" id="anglais" name="anglais" value="">
+                <label for="anglais">Anglais</label><br>
+
+                <input type="checkbox" id="espagnol" name="espagnol" value="">
+                <label for="espagnol">Espagnol</label><br>
+
+                <input type="checkbox" id="allemand" name="allemand" value="">
+                <label for="allemand">Allemand</label><br>
+
+                <input type="checkbox" id="autre" name="autre" value="">
+                <label for="autre">Autre</label><br>
+                <textarea id="autre" style="width: 207px; height: 94px;">                </textarea><br>
+            </div>
+
+            <h2>Type de formation choisie</h2>
+            <select id="formation">
+                <option>développement web</option>
+                <option>DevOps</option>
+                <option>Ingénieur Data</option>
+                <option>Cybersécurité</option>
+            </select><br>
+
+            <h2>Situation</h2>
+
+            <input type="radio" id="salarié" name="situation" value="salarié" checked="">
+            <label for="salarié">Salarié</label><br>
+
+            <input type="radio" id="chomage" name="situation" value="chomage">
+            <label for="chomage">Au chômage</label><br>
+
+            <input type="radio" id="retraité" name="situation" value="retraité">
+            <label for="retraité">Retraité</label>
+
+            <h2>Lettre de motivation</h2>
+
+            <textarea id="lettre" rows="5" style="width: 267px; height: 131px;">
+            </textarea>
+
+        </fieldset>
+
+        <input type="submit" id="submitButton" value="Soumettre">
+    </form>
+
+</body>
+
+</html>

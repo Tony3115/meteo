@@ -1,0 +1,160 @@
+
+<!-- saved from url=(0042)http://127.0.0.1:5500/css%20layouting.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Css Layouting</title>
+</head>
+
+<body>
+    <style>
+        .widget {
+            border: black solid;
+            margin: 10px;
+        }
+    </style>
+    <h1>Layouting CSS</h1>
+
+    <!--
+    <h2>Layouting : Mode flux normal</h2>
+    <div class="widget">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <span class="widget">Texte dans une div 1</span>
+    <span class="widget">Texte dans une div 2</span>
+    <span class="widget">Texte dans une div 3</span>
+    <span class="widget">Texte dans une div 4</span>
+
+
+    <h2>Layounting : Mode Flottant</h2>
+    <div class="widget" style="margin-bottom: 40px;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget" style="float: left;background-color: lightblue ;">
+        Style Float Left
+        Style Float Left
+        Style Float Left
+        Style Float Left
+    </div>
+
+    <div class="widget" style="float: left;background-color: lightblue ;">
+        Style Float Left
+        Style Float Left
+        Style Float Left
+        Style Float Left
+    </div>
+    <br style="clear: both;" />
+
+    <div class="widget" style="background-color: green;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <br style="clear: both;" />
+
+
+    <h2>Layouting : Mode Absolu</h2>
+    <div class="widget" style="position: absolute;background-color: yellow;left:30px;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget" style="position:fixed ;background-color: blueviolet;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+-->
+
+
+    <h2>Layouting : Fusion des marges</h2>
+    <div class="widget" style="margin-bottom: 40px;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+
+    <div class="widget" style="margin-top: 10px ;">
+        Texte
+    </div>
+
+    <div class="widget" style="background-color: red;">
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+        Texte dans une div
+    </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
