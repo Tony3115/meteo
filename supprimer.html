@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Supprimer des évènements </title>
+</head>
+
+<body>
+    <style>
+        #btn {
+            border: solid 2px red;
+        }
+    </style>
+    <div id="debut" class="botd-noir">
+        <div class="formulaire">
+            <form action="action.html" method="POST">
+                <label for="email">Email</label>
+                <input type="text" name="email" value="" id="email"><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" value="" id="password">
+                <br>
+
+                <button id="btn">Soumettre</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    let btn = document.querySelector('#button')
+    btn.addEventListener('click', function (event) {
+        event.preventDefault()
+        console.log(event.target);
+    })
+</script>
+
+</html>
+let btn = document.querySelector('#btn')
+btn.addEventListener('click', function (event) {
+console.log(event.target);
+})

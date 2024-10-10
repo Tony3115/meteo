@@ -1,0 +1,26 @@
+<form action="action" method="post">
+    <input type="text" id="email" value="yvon@gmail.com" />
+    <input type="submit" id="submit">
+
+
+    <div id="widget">
+        <p id="text">Lorem Ipsum</p>
+    </div>
+</form>
+
+<script>
+    let emailInput = document.getElementById('email')
+    let email = emailInput.value
+    console.log(email)
+
+    emailInput.value = "toto@gmail.com"
+
+
+    let t = document.getElementById('text')
+    console.log(t.textContent)
+
+    t.textContent = 'Bonjour !'
+    t.innerHTML = 'Bonjou !'
+
+
+</script>

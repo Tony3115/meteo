@@ -1,0 +1,35 @@
+<script>function convertirTemperature() {
+
+        let temperature = parseFloat(prompt("Entrez la température :"));
+        let unite = prompt("Entrez l'unité (C pour Celsius, F pour Fahrenheit) :").toUpperCase();
+
+        let temperatureConvertie;
+        let message;
+
+        if (unite === "C") {
+            temperatureConvertie = Math.round((temperature * 9 / 5) + 32);
+            message = `${temperature}°C est égal à ${temperatureConvertie}°F.`;
+        } else if (unite === "F") {
+            temperatureConvertie = Math.round((temperature - 32) * 5 / 9);
+            message = `${temperature}°F est égal à ${temperatureConvertie}°C.`;
+        } else {
+            alert("Unité non reconnue. Veuillez entrer 'C' pour Celsius ou 'F' pour Fahrenheit.");
+            return;
+        }
+
+        if (unite === "C" && temperature < 0) {
+            message += " 🥶";
+        } else if (unite === "C" && temperature > 35) {
+            message += " 🥵";
+        } else if (unite === "F" && temperatureConvertie < 0) {
+            message += " 🥶";
+        } else if (unite === "F" && temperatureConvertie > 35) {
+            message += " 🥵";
+        }
+
+        alert(message);
+    }
+
+
+    convertirTemperature();
+</script>

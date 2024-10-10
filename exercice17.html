@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <form action="action" method="post">
+        <input type="text" id="email" value="julie.dupont@gmail.com" />
+        <input type="submit" id="submit">
+    </form>
+
+    <div id="header">
+        <p id="message">Le Javascript est génial !</p>
+    </div>
+</body>
+
+<script>
+    //1//
+    let emailInput = document.getElementById('email')
+    let email = emailInput.value
+    console.log(email)
+
+    //2//
+    let t = document.getElementById('message')
+    console.log(t.textContent)
+
+</script>
+
+</html>

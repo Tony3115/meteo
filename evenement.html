@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmation événementielle</title>
+</head>
+
+<body>
+    <style>
+        #btn {
+            border: solid 2px red;
+        }
+    </style>
+    <div id="debut" class="bord-noir">
+        <h1>Evénnement en JS</h1>
+        <p>
+            <span id="btn">Cliquer sur le texte</span>
+        </p>
+    </div>
+</body>
+<script>
+    let body = document.querySelector('#debut')
+
+    body.addEventListener('click', function (event) {
+        console.log(event.target)
+    })
+</script>
+
+</body>
+
+</html>

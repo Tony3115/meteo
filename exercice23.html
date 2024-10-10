@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meteo</title>
+</head>
+
+<body>
+    <div>
+        <p id="temperature"></p>
+    </div>
+</body>
+
+
+<script>
+    let apikey = '916088cdf141c5bf0ae1f1e90db51914'
+    const ville = 'Toulouse'
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${apikey}`
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log('++data++', data)
+
+            let temperature = (data.main.temp - 273.15).toFixed(1)
+
+            let element = document.getElementById('temperature')
+
+            let dateCourante = new Date();
+            let minutes = dateCourante.getMinutes() + ""
+
+            let temps = dateCourante.getHours() + ":" + minutes.padStart(2, '0')
+
+            element.innerHTML = '<h1>' + ville + ' : ' + temperature + '°C à ' + temps + '<h1>'
+        })
+</script>
+
+</html>

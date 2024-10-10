@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Titre de la page</title>
+
+</head>
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table tr td {
+            border: black solid 1px;
+            padding: 5px;
+        }
+
+        .light {
+            background-color: lightcoral;
+        }
+
+        .formulaire {
+            margin-top: 20px;
+        }
+
+        #centre {
+            color: red;
+        }
+    </style>
+    <div id="debut" class="bord-noir">
+        <h1>Sous titre</h1>
+        <p>
+            <span>Un petit texte de rien du tout dans un tag paragraphe p</span>
+        </p>
+        <p>
+            un second paragraphe p qui contient du texte
+        </p>
+    </div>
+    <div>
+        <table>
+            <th>
+                <tr class="light">
+                    <td>Colonne1</td>
+                    <td>Colonne2</td>
+                    <td>Colonne3</td>
+                </tr>
+            </th>
+            <tbody>
+                <tr class="light">
+                    <td>Données col 1</td>
+                    <td>Données col 2</td>
+                    <td>Données col 3</td>
+                </tr>
+                <tr>
+                    <td>Données col 1</td>
+                    <td id="centre">Données col 2</td>
+                    <td>Données col 3</td>
+                </tr>
+                <tr>
+                    <td>Données col 1</td>
+                    <td>Données col 2</td>
+                    <td>Données col 3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="formulaire">
+        <form action="">
+            <label for="email">Email</label>
+            <input type="text" name="email" value="" id="email"><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" value="" id="password"><br>
+            <input type="submit" value="Soumettre">
+        </form>
+    </div>
+</body>
+
+</html>
+
+manipulation DOM
+
+window.document === document
+let ele = document.querySelector('p')
+console.log(ele)
+ele
+ele.innerHTML
+ele.innerText
+
+
+let n1 = document.querySelectorAll('p');
+n1
+n1[0].textContent
+
+let ele = document.getElementById('debut')
+document.getElementsByClassName('light');
+let r = document.getElementsByTagName('p');
+r[0].textContent
+
+Créer et supprimer des éléments
+
+avant:
+let target = document.querySelector('#debut');
+let div = document.createElement('div');
+
+div.innerHTML = '<span>Pêche, pomme, poire, etc.</span>';
+"<span>Pêche, pomme, poire, etc.</span>"
+
+target.parentNode.insertBefore(div,target)
+
+apres:
+let target = document.querySelector('#debut');
+let div = document.createElement('div');
+
+div.innerHTML = '<span>Pêche, pomme, poire, etc.</span>';
+target.parentNode.insertBefore(div,target.nextSibling)
+
+effacer
+let elem = document.querySelector('div');
+elem.parentNode.removeChild(elem);

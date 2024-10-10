@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méteo</title>
+</head>
+
+<body>
+    <h1>Météo</h1>
+    <input type="text" id="town" value="" required>
+    <input type="button" id="submit" value="Soumettre">
+
+    <div id="result"></div>
+
+</body>
+
+<script>
+
+    let Villes = [];
+
+    document.getElementById("submit").addEventListener("click", function () {
+        let town = document.getElementById("town").value;
+        if (town && !villes.includes(town)) {
+            villes.push(town);
+            afficherMeteo(town);
+        }
+    });
+</script>
+
+</html>

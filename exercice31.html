@@ -1,0 +1,65 @@
+<script>
+    /* function trouverMin(liste) {
+         if (liste.length === 0) {
+             console.log("Test avec une liste vide : " + trouverMin(liste));
+             return "Liste vide non triable";
+         }
+ 
+         let min = liste[0];
+ 
+         for (let i = 1; i < liste.length; i++) {
+             if (liste[i] < min) {
+                 min = liste[i];
+             }
+         }
+ 
+         return min;
+     }
+ 
+     const liste = [65, 14, 22, 1, 10, 9, 18, 71, 56];
+     console.log("L'élément le plus petit est : " + trouverMin(liste));
+ 
+     function trierListe(liste) {
+         const listeTriee = [];
+         while (liste.length > 0) {
+             const min = trouverMin(liste);
+             listeTriee.push(min);
+             liste.splice(liste.indexOf(min), 1);
+         }
+         return listeTriee;
+     }
+ 
+     console.log("Liste triée : " + trierListe(liste));*/
+
+    function trouverMax(liste) {
+        if (liste.length === 0) {
+            return "Liste vide non triable";
+        }
+
+        let max = liste[0];
+
+        for (let i = 1; i < liste.length; i++) {
+            if (liste[i] > max) {
+                max = liste[i];
+            }
+        }
+
+        return max;
+    }
+
+    const liste = [65, 14, 22, 1, 10, 9, 18, 71, 56];
+    console.log("L'élément le plus grand est : " + trouverMax(liste));
+
+    function trierListeDecroissant(liste) {
+        const listeTriee = [];
+        while (liste.length > 0) {
+            const max = trouverMax(liste);
+            listeTriee.push(max);
+            liste.splice(liste.indexOf(max), 1);
+        }
+        return listeTriee;
+    }
+
+    console.log("Liste triée en ordre décroissant : " + trierListeDecroissant(liste));
+
+</script>
