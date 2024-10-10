@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    let sujet = ["le monsieur", "la dame", "le jeune homme"];
+    let verbe = ["mange", "boit", "respire"];
+    let complement = ["un verre de coca", "une glace", "la fumée"];
+
+    function genererCitation() {
+        let sujetAleatoire = sujet[Math.floor(Math.random() * sujet.length)];
+        let verbeAleatoire = verbe[Math.floor(Math.random() * verbe.length)];
+        let complementAleatoire = complement[Math.floor(Math.random() * complement.length)];
+
+        let citation = `${sujetAleatoire} ${verbeAleatoire} ${complementAleatoire}.`;
+        console.log(citation);
+    }
+
+
+    genererCitation();
+</script>
+
+</html>

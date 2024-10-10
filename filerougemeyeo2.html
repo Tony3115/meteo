@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méteo</title>
+</head>
+
+<body>
+    <h1>Météo</h1>
+    <input type="text" id="town" value="" required>
+    <input type="button" id="submit" value="Soumettre">
+
+    <div id="result"></div>
+</body>
+
+<script>
+    let villes = [];
+
+    document.getElementById("submit").addEventListener("click", function () {
+        let town = document.getElementById("town").value;
+        if (town && !villes.includes(town)) {
+            villes.push(town);
+            afficherMeteo(town);
+        }
+    });
+
+    function afficherMeteo(town) {
+        let apikey = '916088cdf141c5bf0ae1f1e90db51914';
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&appid=${apikey}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let temperature = (data.main.temp - 273.15).toFixed(1);
+                let humidite = data.main.humidity + "%";
+                let icone = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+                let resultDiv = document.getElementById("result");
+                let villeDiv = document.createElement("div");
+                villeDiv.innerHTML = `
+                    <h2>${town}</h2>
+                    <div>Température : ${temperature}°C</div>
+                    <div>Humidité : ${humidite}</div>
+                    <img src="${icone}" alt="${data.weather[0].description}">
+                `;
+                resultDiv.appendChild(villeDiv);
+            })
+    }
+</script>
+
+</html>

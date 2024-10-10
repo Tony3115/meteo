@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="imcForme">
+        <label for="poids">poids</label>;
+        <input type="number" id="poids" value="" required>
+        <br>
+        <label for="taille">taille</label>;
+        <input type="number" id="taille" value="" required>
+        <br>
+        <button type="button" id="bouton" click="calculerIMC()">CalculerIMC</button>
+    </form>
+
+    <p id="result"></p>
+
+</body>
+<script>
+
+    let button = document.getElementById('bouton')
+    button.addEventListener("click", calculerIMC)
+
+
+
+    function calculerIMC() {
+
+
+        poids = parseFloat(document.getElementById('poids').value);
+        taille = parseFloat(document.getElementById('taille').value);
+        debugger
+        console.log(poids, taille)
+        if (poids > 0 && taille > 0) {
+            imc = poids / (taille * taille);
+            imc = imc.toFixed(2);
+            document.getElementById('result').textContent = `votre IMC est de ${imc}`;
+        } else {
+            document.getElementById('result').textContent = `Veuillez entrer votre poids et votre taille`;
+        }
+    }
+
+
+    /*function calculerIMC(poids, taille) {
+         if (poids <= 0 || taille <= 0) {
+             return 'Les valeurs doivent être positives.';
+         }
+ 
+         let imc = poids / (taille * taille);
+ 
+ 
+         return imc.toFixed(2);
+     }
+ 
+     let poids = prompt("Entrez votre poids en kg : ")
+     let taille = prompt("Entrez votre taille en m : ")
+     console.log("Votre IMC est de : " + calculerIMC(poids, taille));*/
+</script>
+
+</html>

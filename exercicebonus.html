@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Démo des événements</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Démo des événements</h1>
+    <input type="text" id="inputField" placeholder="Tapez quelque chose...">
+    <div class="box" id="mouseBox">Passez la souris ici</div>
+    <button id="prix">Cliquez-moi</button>
+
+    <script>
+        document.getElementById('inputField').addEventListener('input', function (event) {
+            console.log('Input event:', event);
+        });
+
+        document.getElementById('inputField').addEventListener('keydown', function (event) {
+            console.log('Keydown event:', event);
+        });
+        /* document.getElementById('inputField').addEventListener('keyup', function (event) {
+             console.log('Keyup event:', event);
+         });*/
+        /*document.getElementById('inputField').addEventListener('keypress', function (event) {
+            console.log('Keypress event:', event);
+        });*/
+
+        document.getElementById('inputField').addEventListener('focus', function (event) {
+            console.log('Focus event:', event);
+        });
+        document.getElementById('inputField').addEventListener('blur', function (event) {
+            console.log('Blur event:', event);
+        });
+
+        document.getElementById('mouseBox').addEventListener('mouseenter', function (event) {
+            console.log('Mouseenter event:', event);
+        });
+        document.getElementById('mouseBox').addEventListener('mouseleave', function (event) {
+            console.log('Mouseleave event:', event);
+        });
+
+        document.getElementById('prix').addEventListener('click', function (event) {
+            console.log('Click event:', event);
+        });
+    </script>
+</body>
+
+</html>

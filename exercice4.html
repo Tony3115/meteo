@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style type="text/css">
+        #matable {
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+
+        #matable td {
+            border: 1px black solid;
+        }
+    </style>
+    <table id="matable">
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Age</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dupont</td>
+                <td>Jacques</td>
+                <td>32</td>
+                <td>Effacer</td>
+            </tr>
+            <tr>
+                <td>Dutronc</td>
+                <td>Amaury</td>
+                <td>41</td>
+                <td>Effacer</td>
+            </tr>
+            <tr>
+                <td>Peter</td>
+                <td>Magali</td>
+                <td>33</td>
+                <td>Effacer</td>
+            </tr>
+        </tbody>
+    </table>
+    <form>
+        <label>Nom</label><br>
+        <input type="text" name="nom" id="nom"><br>
+        <label>Prenom</label><br>
+        <input type="text" name="prenom" id="prenom"><br>
+        <label>Age</label><br>
+        <input type="text" name="age" id="age"><br>
+        <input type="submit" id="soumettre" name="soumettre">
+    </form>
+</body>
+
+<script>
+
+    document.querySelectorAll('#matable tbody tr').forEach(row => {
+        row.addEventListener('click', (event) => {
+
+            let cells = row.querySelectorAll('td');
+            let nom = cells[0].textContent;
+            let prenom = cells[1].textContent;
+            let age = cells[2].textContent;
+            console.log(`Nom: ${nom}, Prénom: ${prenom}, Age: ${age}`);
+
+
+        })
+    });
+
+    document.querySelectorAll('#matable tbody tr td:last-child').forEach(cell => {
+        cell.addEventListener('click', (event) => {
+            event.stopPropagation();
+            cell.parentElement.remove();
+        });
+    });
+
+    document.getElementById('soumettre').addEventListener('click', (event) => {
+        event.preventDefault();
+        let nom = document.getElementById('nom').value.trim();
+        let prenom = document.getElementById('prenom').value.trim();
+        let age = document.getElementById('age').value.trim();
+
+        if (nom && prenom && age) {
+            let table = document.querySelector('#matable tbody');
+            let newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+            <td>${nom}</td>
+            <td>${prenom}</td>
+            <td>${age}</td>
+            <td>Effacer</td>
+        `;
+
+            table.appendChild(newRow);
+
+            document.getElementById('nom').value = '';
+            document.getElementById('prenom').value = '';
+            document.getElementById('age').value = '';
+
+            newRow.addEventListener('click', () => {
+                console.log(`Nom: ${nom}, Prénom: ${prenom}, Age: ${age}`);
+            });
+
+            newRow.querySelector('td:last-child').addEventListener('click', (event) => {
+                event.stopPropagation();
+                newRow.remove();
+            });
+        } else {
+            alert('Veuillez remplir tous les champs.');
+        }
+    });
+
+
+
+</script>
+
+</html>

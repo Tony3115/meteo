@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js</script>
+
+
+
+
+</head>
+
+<body>
+    <ul id="panier">
+        <li>Pomme</li>
+        <li>Poire</li>
+        <li>Pêche</li>
+    </ul>
+
+    <form>
+        <label>Fruits</label><br>
+        <input type="text" id="fruit" value=""><br>
+        <input type="submit" name="soumettre">
+    </form>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let form = document.querySelector('form');
+        let fruitInput = document.getElementById('fruit');
+        let panier = document.getElementById('panier');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let fruit = fruitInput.value.trim();
+            if (fruit === '') {
+                alert('Veuillez entrer un fruit.');
+                return;
+            }
+
+            let li = document.createElement('li');
+            li.textContent = fruit;
+
+            let firstLetter = fruit.charAt(0).toLowerCase();
+            if ('aeiou'.includes(firstLetter)) {
+                panier.insertBefore(li, panier.firstChild);
+            } else {
+                panier.appendChild(li);
+            }
+
+            fruitInput.value = '';
+        });
+    });
+</script>
+
+</html>

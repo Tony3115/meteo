@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <form id="registrationForm" action="/submit" method="post">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="cgv">
+            <input type="checkbox" id="cgv" name="cgv" required>
+            J'accepte les <a href="/cgv">Conditions Générales de Vente</a>
+        </label><br><br>
+
+        <button type="submit">S'inscrire</button>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#registrationForm').submit(function (event) {
+            let email = $('#email').val();
+            let password = $('#password').val();
+            let cgv = $('#cgv').is(':checked');
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailRegex.test(email)) {
+                alert('Veuillez entrer une adresse email valide.');
+                event.preventDefault();
+            } else if (password.length < 8) {
+                alert('Le mot de passe doit contenir au moins 8 caractères.');
+                event.preventDefault();
+            } else if (!cgv) {
+                alert('Vous devez accepter les Conditions Générales de Vente.');
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+</html>

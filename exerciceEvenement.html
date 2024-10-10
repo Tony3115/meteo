@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        #header {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <div class="container">
+        <div id="header">Veuillez remplir le formulaire</div>
+        <form>
+            <label>Prénom</label>
+            <input type="text" id="prenom" value=""><br>
+            <label>Nom</label>
+            <input type="text" id="nom" value=""><br>
+        </form>
+    </div>
+</body>
+
+<script>
+    document.getElementById("header").onclick = function () {
+        let headerText = document.getElementById("header").innerText;
+        alert(headerText);
+    };
+
+    document.getElementById("prenom").addEventListener("change", function () {
+        let prenomLength = this.value.length;
+        console.log("Longueur du prénom : " + prenomLength);
+    });
+
+    document.getElementById("nom").addEventListener("focus", function () {
+        console.log("Vous êtes en train de remplir le champ nom");
+    });
+
+    document.getElementById("nom").addEventListener("blur", function () {
+        console.log("Vous ne remplissez plus le champ nom");
+    });
+</script>
+
+</script>
+
+</html>
