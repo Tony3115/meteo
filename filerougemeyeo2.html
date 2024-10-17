@@ -5,24 +5,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Méteo</title>
+    <style>
+        body {
+            background-image: url(https://media1.tenor.com/images/ceeac567fa9b9d7c17af3b5969bae31d/tenor.gif?itemid=8632998);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            animation: background-animation 20s infinite;
+            color: whitesmoke;
+            margin: 20px;
+            height: auto;
+        }
+
+        @keyframes background-animation {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        #begin {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: center;
+            align-content: stretch;
+
+        }
+
+        #result div {
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: stretch;
+            align-content: stretch;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            position: relative;
+
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+
+        .delete-btn {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+
+            #result div {
+                padding: 5px;
+            }
+
+            .delete-btn {
+                top: 5px;
+                right: 5px;
+                padding: 3px;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 1200px) {
+            body {
+                margin: 15px;
+            }
+
+            #result div {
+                padding: 8px;
+            }
+
+
+            .delete-btn {
+                top: 8px;
+                right: 8px;
+                padding: 4px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Météo</h1>
-    <input type="text" id="town" value="" required>
-    <input type="button" id="submit" value="Soumettre">
 
-    <div id="result"></div>
+    <div class="container">
+        <fieldset>
+            <div id="begin">
+                <h1>Météo</h1>
+                <form id="weatherForm">
+                    <input type="text" id="town" placeholder="Entrez une ville" required>
+                    <input type="submit" value="Soumettre">
+                </form>
+            </div>
+
+            <div id="result"></div>
+        </fieldset>
+    </div>
 </body>
 
 <script>
-    let villes = [];
+    let villes = JSON.parse(localStorage.getItem('villes')) || [];
+    let defaultTown = "Paris";
 
-    document.getElementById("submit").addEventListener("click", function () {
-        let town = document.getElementById("town").value;
+    function capitalizeFirstLetter(string) {
+        if (typeof string === 'string') {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+    }
+
+    document.getElementById("weatherForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        let town = document.getElementById("town").value.trim();
         if (town && !villes.includes(town)) {
             villes.push(town);
+            localStorage.setItem('villes', JSON.stringify(villes));
             afficherMeteo(town);
+            document.getElementById("town").value = '';
+
         }
     });
 
@@ -31,23 +149,49 @@
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&appid=${apikey}`;
 
         fetch(url)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ville non trouvée');
+                }
+                return response.json();
+            })
             .then(data => {
-                let temperature = (data.main.temp - 273.15).toFixed(1);
+
+                let temperature = (data.main.temp - 273.15).toFixed(2);
                 let humidite = data.main.humidity + "%";
                 let icone = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
                 let resultDiv = document.getElementById("result");
                 let villeDiv = document.createElement("div");
                 villeDiv.innerHTML = `
-                    <h2>${town}</h2>
-                    <div>Température : ${temperature}°C</div>
-                    <div>Humidité : ${humidite}</div>
-                    <img src="${icone}" alt="${data.weather[0].description}">
+                    <h2>${capitalizeFirstLetter(town)}</h2>
+                    <div class="temperature">Température : ${temperature}°C</div>
+                    <div class="humidite">Humidité : ${humidite}</div>
+                    <img class="img" src="${icone}" alt="${data.weather[0].description}">
+                    <button class="delete-btn" onclick="supprimerVille('${town}')">Supprimer</button>
                 `;
                 resultDiv.appendChild(villeDiv);
             })
+            .catch(error => {
+                alert(error.message);
+            });
     }
+
+    function supprimerVille(town) {
+        villes = villes.filter(v => v !== town);
+        localStorage.setItem('villes', JSON.stringify(villes));
+        let resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = '';
+        villes.forEach(v => afficherMeteo(v));
+    }
+
+    window.onload = function () {
+        if (villes.length === 0) {
+            afficherMeteo(defaultTown);
+        } else {
+            villes.forEach(v => afficherMeteo(v));
+        }
+    };
 </script>
 
 </html>

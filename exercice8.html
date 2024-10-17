@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application jQuery Simple</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Bienvenue dans l'application jQuery</h1>
+    <button id="showMessage">Cliquez ici</button>
+    <p id="message" style="display:none;">Bonjour! Ceci est un message jQuery.</p>
+</body>
+
+<script>$(document).ready(function () {
+        $("#showMessage").click(function () {
+            $("#message").toggle();
+        });
+    });
+</script>
+
+</html>
