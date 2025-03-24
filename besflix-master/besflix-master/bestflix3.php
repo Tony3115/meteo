@@ -53,6 +53,7 @@
 
         }
     </style>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -100,16 +101,16 @@
                         <h2>Adresse</h2>
                         <div class="form-row">
                             <div class="col-7">
-                                <input type="text" class="form-control" placeholder="Adresse" required>
+                                <input id="adresse" type="text" class="form-control" placeholder="Adresse" required>
                             </div>
                             <div class="col-7">
-                                <input type="text" class="form-control" placeholder="City" required>
+                                <input id="city" type="text" class="form-control" placeholder="City" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="State">
+                                <input id="state" type="text" class="form-control" placeholder="State">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Zip" required>
+                                <input id="zip" type="text" class="form-control" placeholder="Zip" required>
                             </div>
                         </div>
 
@@ -137,17 +138,19 @@
                         <h3>Paiement</h3>
                         <div class="form-group">
                             <label for="">Card number</label>
-                            <input type="text" class="form-control" placeholder="Numéro de la carte" required>
+                            <input id="carte" type="text" class="form-control" placeholder="Numéro de la carte"
+                                required>
                         </div>
                         <div class="row">
 
                             <div class="col-6">
                                 <label for="">Mois</label>
-                                <input maxlength="2" type="text" class="form-control" placeholder="Mois" required>
+                                <input id="mois" maxlength="2" type="text" class="form-control" placeholder="Mois"
+                                    required>
                             </div>
                             <div class="col-6">
                                 <label for="">Année</label>
-                                <input type="text" class="form-control" placeholder="Année" required>
+                                <input id="annee" type="text" class="form-control" placeholder="Année" required>
                             </div>
                         </div>
 
@@ -155,7 +158,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="">CVC</label>
-                                <input maxlength="3" type="text" class="form-control" placeholder="code"><br>
+                                <input id="code" maxlength="3" type="text" class="form-control" placeholder="code"><br>
 
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1" required>
@@ -166,7 +169,7 @@
 
 
 
-                                <input type="submit" class=" btn btn-primary" value="Valider">
+                                <input id="button" type="submit" class=" btn btn-primary" value="Valider">
                             </div>
                         </div>
 
@@ -180,7 +183,6 @@
 
         </div>
     </div>
-    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
@@ -188,70 +190,153 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
 
-<script>
+<script type = 'text/javascript'>
     $(document).ready(function () {
         $("#abonnement").change(function () {
             var selectedText = $(this).find("option:selected").text();
             $(".list-group-item.formule").text(selectedText);
         });
-    });
 
-    function isValidEmail(email) {
-        var emailRegex = /^[^\d][\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-        return emailRegex.test(email);
-    }
 
-    $(document).ready(function () {
-        $("#exampleInputEmail1").on("input", function () {
-            var email = $(this).val();
-            if (isValidEmail(email)) {
-                $(this).css("border-color", "green");
-            } else {
-                $(this).css("border-color", "red");
-            }
-        });
-    });
-
-    $("#myForm").submit(function (event) {
-        event.preventDefault();
-
-        if (!$("#exampleInputEmail1").val() || !$("#nom").val() || !$("#prenom").val() || !$("#gridCheck1").is(":checked") || !isValidEmail($("#exampleInputEmail1").val()) || !$("#cardNumber").val() || !$("#expMonth").val() || !$("#expYear").val() || !$("#cvc").val()) {
-            alert("Veuillez remplir tous les champs correctement.");
-            return;
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
         }
 
-        alert("Formulaire soumis avec succès!");
+        $("#button").on("click", function (event) {
+            event.preventDefault();
+            let email = $('#exampleInputEmail1').val();
+            let nom = $('#nom').val();
+            let prenom = $('#prenom').val();
+            let adresse = $('#adresse').val();
+            let city = $('#city').val();
+            let state = $('#state').val();
+            let zip = $('#zip').val();
+            let carte = $('#carte').val();
+            let mois = $('#mois').val();
+            let annee = $('#annee').val();
+            let code = $('#code').val();
+            let cgv = $('#gridCheck1').is(':checked');
+            console.log(cgv)
+
+            if (!isValidEmail(email)) {
+                alert("Veuillez remplir l'email correctement")
+            } else if (nom == '') {
+                alert("Veuillez remplir le nom correctement")
+            } else if (prenom == '') {
+                alert("Veuillez remplir le prenom correctement")
+            } else if (adresse == '') {
+                alert("Veuillez remplir l'adresse correctement")
+            } else if (city == '') {
+                alert("Veuillez remplir la ville correctement")
+            } else if (state == '') {
+                alert("Veuillez remplir la région correctement")
+            } else if (zip == '') {
+                alert("Veuillez remplir le code postal correctement")
+            } else if (carte == '') {
+                alert("Veuillez remplir la ligne du détenteur de la carte correctement")
+            } else if (annee == '') {
+                alert("Veuillez remplir l'année correctement")
+            } else if (mois == '') {
+                alert("Veuillez remplir le mois correctement")
+            } else if (code == '') {
+                alert("Veuillez rentrer le code de la")
+            } else if (!cgv) {
+                alert("Veuillez cocher les Conditions Générales de Vente")
+            };
 
 
-        var formData = {
-            email: $("#exampleInputEmail1").val(),
-            nom: $("#nom").val(),
-            prenom: $("#prenom").val(),
-            adresse: $("input[placeholder='Adresse']").val(),
-            ville: $("input[placeholder='City']").val(),
-            zip: $("input[placeholder='Zip']").val(),
-            cardNumber: $("#cardNumber").val(),
-            expMonth: $("#expMonth").val(),
-            expYear: $("#expYear").val(),
-            cvc: $("#cvc").val()
-        };
 
-        $.ajax({
-            url: 'https://api.stripe.com/v1/charges',
-            type: 'POST',
-            data: formData,
-            headers: {
-                'Authorization': 'Bearer YOUR_STRIPE_SECRET_KEY'
-            },
-            success: function (response) {
-                alert('Paiement réussi! Merci pour votre inscription.');
-            },
-            error: function (response) {
-                alert('Erreur lors du traitement du paiement. Veuillez réessayer.');
-            }
-        });
 
+
+            let formData = {
+                email: $("#exampleInputEmail1").val(),
+                nom: $("#nom").val(),
+                prenom: $("#prenom").val(),
+                adresse: $("input[placeholder='Adresse']").val(),
+                city: $("input[placeholder='City']").val(),
+                state: $("input[placeholder='State']").val(),
+                zip: $("input[placeholder='Zip']").val(),
+                cardNumber: $("#cardNumber").val(),
+                expMonth: $("#expMonth").val(),
+                expYear: $("#expYear").val(),
+                cvc: $("#cvc").val()
+            };
+
+            var stripe = Stripe('pk_test_51QBEQTLz3kjsRkUfcDfxfwxORiEG1NP7YxTqRNA7e0zCMo7MN4MgkiwZqp5Xv1fhcTE8Hy6NshkELkImx1WPoVSk00nU1788Uy');
+  var elements = stripe.elements();
+
+  // Custom styling can be passed to options when creating an Element.
+  var style = {
+    base: {
+      // Add your base input styles here. For example:
+      fontSize: '16px',
+      color: '#32325d',
+    },
+  };
+
+  // Create an instance of the card Element.
+  var card = elements.create('card', {
+    style: style
+  });
+
+  // Add an instance of the card Element into the `card-element` <div>.
+  card.mount('#card-element');
+
+
+
+  // Create a token or display an error when the form is submitted.
+  var form = document.getElementById('payment-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        // Inform the customer that there was an error.
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+      } else {
+        console.log(result.id)
+        // Send the token to your server.
+        debugger
+        stripeTokenHandler(result.token);
+      }
     });
+  });
+
+  function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById('payment-form');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+  }
+
+            $.ajax({
+    url: '',
+    apikey: process.env.STRIPE_PUBLIC_KEY,
+    type: 'POST',
+    data: formData,
+    headers: {
+        'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`
+    },
+    success: function (response) {
+        alert('Paiement réussi! Merci pour votre inscription.');
+    },
+    error: function (response) {
+        alert('Erreur lors du traitement du paiement. Veuillez réessayer.');
+    }
+});
+
+
+        });
+    });
+
 
 
 

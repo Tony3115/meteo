@@ -55,6 +55,7 @@
 
         h2 {
             margin: 0;
+            margin-top: 15px;
         }
 
 
@@ -69,12 +70,14 @@
             cursor: pointer;
         }
 
+        /*Pour telephone*/
         @media (max-width: 600px) {
             body {
                 margin: 10px;
             }
 
             #result div {
+                display: block;
                 padding: 5px;
             }
 
@@ -83,14 +86,19 @@
                 right: 5px;
                 padding: 3px;
             }
+            .img {
+            display: none; 
+    }
         }
 
+        /*Pour tablette*/
         @media (min-width: 601px) and (max-width: 1200px) {
             body {
                 margin: 15px;
             }
 
             #result div {
+                display: block;
                 padding: 8px;
             }
 
