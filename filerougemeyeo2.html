@@ -186,6 +186,7 @@
     }
 
     function supprimerVille(town) {
+
         villes = villes.filter(v => v !== town);
         localStorage.setItem('villes', JSON.stringify(villes));
         let resultDiv = document.getElementById("result");
@@ -194,11 +195,11 @@
     }
 
     window.onload = function () {
-        if (villes.length === 0) {
-            afficherMeteo(defaultTown);
-        } else {
-            villes.forEach(v => afficherMeteo(v));
-        }
+    if (!villes.includes(defaultTown)) {
+        villes.unshift(defaultTown); 
+        localStorage.setItem('villes', JSON.stringify(villes));
+    }
+    villes.forEach(v => afficherMeteo(v));
     };
 </script>
 
