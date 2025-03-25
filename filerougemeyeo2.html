@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url(https://media1.tenor.com/images/ceeac567fa9b9d7c17af3b5969bae31d/tenor.gif?itemid=8632998);
+            background-image: url(https://i.gifer.com/Lx0q.gif);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             animation: background-animation 20s infinite;
-            color: whitesmoke;
+            color: rgba(255, 255, 255, 0.9);
             margin: 20px;
             height: auto;
             font-family: "Open Sans", sans-serif;
@@ -101,30 +101,39 @@
         padding: 10px; 
 }
 
-
         #result div {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: stretch;
             align-content: stretch;
             border: 1px solid #ccc;
+            background-color: rgba(83, 83, 83, 0.2);
             padding: 10px;
             margin: 10px 0;
-            position: relative;
         }
 
-        h2 {
-            margin: 0;
-            margin-top: 15px;
+        .ville{
+            width: 20%;
+
         }
 
+        .temperature{
+            width: 25%;
+        }
+
+        .humidite{
+            width: 25%;
+        }
+
+        .img{
+            width: 10%;
+        }
 
         .delete-btn {
-            position: absolute;
-            top: 30px;
-            right: 10px;
+            width: 20%;
+            font-size: 18px; 
             background-color: red;
             color: white;
             border: none;
@@ -234,11 +243,13 @@
                 let resultDiv = document.getElementById("result");
                 let villeDiv = document.createElement("div");
                 villeDiv.innerHTML = `
-                    <h2>${capitalizeFirstLetter(town)}</h2>
+                    <div class="ville">${capitalizeFirstLetter(town)}</div>
                     <div class="temperature">Température : ${temperature}°C</div>
                     <div class="humidite">Humidité : ${humidite}</div>
-                    <img class="img" src="${icone}" alt="${data.weather[0].description}">
-                    <button class="delete-btn" onclick="supprimerVille('${town}')">Supprimer</button>
+                    <div class="img">
+                        <img src="${icone}" alt="${data.weather[0].description}">
+                        </div>
+                    <div class="delete-btn" onclick="supprimerVille('${town}')">Supprimer</div>
                 `;
                 resultDiv.appendChild(villeDiv);
             })
