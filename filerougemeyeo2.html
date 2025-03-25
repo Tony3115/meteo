@@ -27,6 +27,52 @@
             "wdth" 100;
         }
 
+/*champ de saisie*/
+#weatherForm input[type="text"] {
+    width: 250px; 
+    padding: 10px; 
+    margin-right: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 25px;
+    background-color:white;
+    color: black; 
+    font-size: 20px; 
+    outline: none; 
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); 
+    transition: all 0.4s ease-in-out; 
+    text-align: center;
+}
+
+#weatherForm input[type="text"]:focus {
+    border-color: #3498db;
+    background-color:white; 
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.5);
+}
+
+/*bouton de saisie*/
+#weatherForm input[type="submit"] {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 25px; 
+    background: linear-gradient(to right, #3498db, #2980b9); 
+    color: whitesmoke; 
+    font-size: 20px; 
+    font-weight: bold; 
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+}
+
+#weatherForm input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#weatherForm input[type="submit"]:active {
+    transform: translateY(0); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+        
         @keyframes background-animation {
             0% {
                 background-position: 0 0;
