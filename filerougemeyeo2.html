@@ -99,13 +99,12 @@
         max-width: 800px;
         width: 100%; 
         margin: 0 auto; 
-        box-sizing: border-box; 
         padding: 10px; 
 }
 
-        #result div {
+        #result {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: nowrap;
             justify-content: space-between;
             align-items: stretch;
@@ -144,27 +143,52 @@
         }
 
         /*Pour telephone*/
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            #result div {
-                display: block;
-                padding: 5px;
+            #result  {
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap;
+        justify-content: space-between; 
+        align-items: center;
+        height: auto;
+
+            }
+
+            .ville{
+                width: 100%;
+                font-size: 20px;
+                border: blue solid 2px;
+                display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+            
+            }
+
+            .enfant{
+                width: 150px;
+            border:red solid 2px;
+        }
+
+            .temperature, .humidite {
+             width: 45%;
             }
 
             .delete-btn {
                 top: 5px;
                 right: 5px;
                 padding: 3px;
+                width: 100%;
             }
+            
             .img {
             display: none !important;
             }
-            .ville{
-            width: 100%;
-            font-size: 20px;
-        }
-  
-        }
+
+}
 
         /*Pour tablette*/
         @media (min-width: 601px) and (max-width: 1200px) {
@@ -183,14 +207,14 @@
                 right: 8px;
                 padding: 4px;
             }
-        }
+         }
+
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <fieldset>
             <div id="begin">
                 <h1>Météo</h1>
                 <form id="weatherForm">
@@ -198,9 +222,8 @@
                     <input type="submit" value="Soumettre">
                 </form>
             </div>
-
             <div id="result"></div>
-        </fieldset>
+
     </div>
 </body>
 
@@ -250,7 +273,7 @@
                 let resultDiv = document.getElementById("result");
                 let villeDiv = document.createElement("div");
                 villeDiv.innerHTML = `
-                    <div class="ville">${capitalizeFirstLetter(town)}</div>
+                    <div class="ville"><div class="enfant">${capitalizeFirstLetter(town)}</div></div>
                     <div class="temperature">Température : ${temperature}°C</div>
                     <div class="humidite">Humidité : ${humidite}</div>
                     <div class="img" >
