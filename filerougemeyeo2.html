@@ -145,9 +145,6 @@
 
         /*Pour telephone*/
         @media (max-width: 600px) {
-            body {
-                margin: 10px;
-            }
 
             #result div {
                 display: block;
@@ -160,8 +157,13 @@
                 padding: 3px;
             }
             .img {
-            display: none; 
-    }
+            display: none !important;
+            }
+            .ville{
+            width: 100%;
+            font-size: 20px;
+        }
+  
         }
 
         /*Pour tablette*/
@@ -251,7 +253,7 @@
                     <div class="ville">${capitalizeFirstLetter(town)}</div>
                     <div class="temperature">Température : ${temperature}°C</div>
                     <div class="humidite">Humidité : ${humidite}</div>
-                    <div class="img">
+                    <div class="img" >
                         <img src="${weatherApiIcon}" alt="${weatherDescription}">
                         </div>
                     <div class="delete-btn" onclick="supprimerVille('${town}')"><i class="bi bi-trash"></i></i></div>
