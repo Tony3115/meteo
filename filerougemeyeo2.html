@@ -19,7 +19,6 @@
             background-position: center;
             animation: background-animation 20s infinite;
             color: rgba(255, 255, 255, 0.9);
-            margin: 20px;
             height: auto;
             font-family: "Open Sans", sans-serif;
             font-optical-sizing: auto;
@@ -96,13 +95,7 @@
         }
 
         #result {
-        max-width: 800px;
-        width: 100%; 
-        margin: 0 auto; 
-        padding: 10px; 
-}
-
-        #result {
+            max-width: 800px;
             display: flex;
             flex-direction: column;
             flex-wrap: nowrap;
@@ -112,6 +105,7 @@
             background-color: rgba(83, 83, 83, 0.2);
             padding: 10px;
             margin: 10px 0;
+            width: 100%; 
         }
 
         .ville{
@@ -152,43 +146,73 @@
         justify-content: space-between; 
         align-items: center;
         height: auto;
+        margin: -1px;
 
             }
 
-            .ville{
-                width: 100%;
-                font-size: 20px;
-                border: blue solid 2px;
+            .enfantTH{
                 display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	align-content: stretch;
-            
+                flex-wrap: nowrap;
+                flex-direction: row;
+                width: 100%;
             }
 
-            .enfant{
-                width: 150px;
-            border:red solid 2px;
-        }
+.temperature, .humidite {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    text-align: center;
+}
 
-            .temperature, .humidite {
-             width: 45%;
-            }
+.ville {
+    margin: 10px;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
 
             .delete-btn {
-                top: 5px;
-                right: 5px;
-                padding: 3px;
-                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                display: flex;
+	            flex-direction: column;
+	            flex-wrap: wrap;
+	            justify-content: center;
+	            align-items: center;
+	            align-content: stretch;
+
             }
             
             .img {
             display: none !important;
             }
 
+            #weatherForm {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    #weatherForm input[type="text"] {
+        margin-bottom: 20px; 
+        width: 100%; 
+    }
+
+    #weatherForm input[type="submit"] {
+        width: auto; 
+        margin-bottom: 20px;
+    }
 }
+
+
 
         /*Pour tablette*/
         @media (min-width: 601px) and (max-width: 1200px) {
@@ -274,12 +298,12 @@
                 let villeDiv = document.createElement("div");
                 villeDiv.innerHTML = `
                     <div class="ville"><div class="enfant">${capitalizeFirstLetter(town)}</div></div>
-                    <div class="temperature">Température : ${temperature}°C</div>
+                    <div class="temperature"><div class="enfantTH">Température : ${temperature}°C</div>
                     <div class="humidite">Humidité : ${humidite}</div>
-                    <div class="img" >
+                    <div class="img" ><div class="enfant">
                         <img src="${weatherApiIcon}" alt="${weatherDescription}">
-                        </div>
-                    <div class="delete-btn" onclick="supprimerVille('${town}')"><i class="bi bi-trash"></i></i></div>
+                        </div></div>
+                    <div class="delete-btn" onclick="supprimerVille('${town}')"><i class="bi bi-trash"></i></i></div></div>
                 `;
                 resultDiv.appendChild(villeDiv);
             })
