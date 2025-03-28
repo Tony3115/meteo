@@ -12,6 +12,13 @@
     
     <style>
 body {
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
             background-image: url(https://i.gifer.com/Lx0q.gif);
             background-size: cover;
             background-repeat: no-repeat;
@@ -313,13 +320,13 @@ body {
                 let villeDiv = document.createElement("div");
                 villeDiv.classList.add("widget");
                 villeDiv.innerHTML = `
-                    <div class="ville"><div class="enfant">${capitalizeFirstLetter(town)}</div></div>
-                    <div class="temperature"><div class="enfantTH">Température : ${temperature}°C</div></div>
+                    <div class="ville">${capitalizeFirstLetter(town)}</div></div>
+                    <div class="temperature">Température : ${temperature}°C</div></div>
                     <div class="humidite">Humidité : ${humidite}</div>
-                    <div class="img" ><div class="enfant">
+                    <div class="img" >
                         <img src="${weatherApiIcon}" alt="${weatherDescription}">
                         </div></div>
-                    <div class="delete-btn" onclick="supprimerVille('${town}')"><i class="bi bi-trash"></i></i>
+                    <div class="delete-btn" onclick="supprimerVille('${town}')"><i class="bi bi-trash"></i></i></div>
                 `;
                 resultDiv.appendChild(villeDiv);
             })
